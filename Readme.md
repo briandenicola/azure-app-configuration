@@ -14,7 +14,12 @@ This is a quick demo on how to use Azure App Configuration with Managed Identiti
         * Select the Key Vault created in the Resource Group deployment
         * You may have to grant yourself to the Key Vault acess policies 
     * Key-Value - config::basic::test001
-        * Value - "this came from AppConfig"
+        * Value - "this came from AppConfig - Prod"
+        * Label - "Production"
+    * Key-Value - config::basic::test001
+        * Value - "this came from AppConfig - UAT"
+        * Label - "UAT"
+
 
 ## Web Site Deployment
 * Deploy the code in .\src to your Azure App Service slot. I use Visual Studio Code for my deploy
@@ -28,7 +33,7 @@ This is a quick demo on how to use Azure App Configuration with Managed Identiti
         {
             "date": "2020-04-03T14:45:12.1391804-05:00",
             "keyVaultReference": "this is a secret from key vault",
-            "directReference": "this came from AppConfig"
+            "directReference": "this came from AppConfig - Prod"
         }
     ]
     ```

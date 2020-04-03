@@ -17,7 +17,8 @@
     },
     "variables": {
         "location": "[resourceGroup().location]",
-        "tenantId": "[subscription().tenantId]"
+        "tenantId": "[subscription().tenantId]",
+        "environment": "Production"
     },
     "resources": [
         {
@@ -114,7 +115,9 @@
                          "[concat('Microsoft.Web/sites/', parameters('SiteName'),'/slots/uat')]"
                     ],
                     "properties" : {
-                        "APP_CONFIG_ENDPOINT": "[reference(concat('Microsoft.AppConfiguration/configurationStores/', parameters('AppConfigName')), '2019-11-01-preview', 'Full').properties.endpoint]"
+                        "APP_CONFIG_ENDPOINT": "[reference(concat('Microsoft.AppConfiguration/configurationStores/', parameters('AppConfigName')), '2019-11-01-preview', 'Full').properties.endpoint]",
+                        "APP_ENVIRONMENT": "[variables('environment')]",
+                        "WEBSITE_NODE_DEFAULT_VERSION": "6.9.2"
                     }
                 }
             ]

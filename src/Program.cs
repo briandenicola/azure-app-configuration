@@ -29,12 +29,15 @@ namespace dotnet_restapi
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(Environment.GetEnvironmentVariable("APP_CONFIG_ENDPOINT")), credentials)
-                                .ConfigureKeyVault(kv =>
-                                {
-                                    kv.SetCredential(credentials);
-                                });
+                            .ConfigureKeyVault(kv =>
+                            {
+                                kv.SetCredential(credentials);
+                            })
+                            .Select(KeyFilter.Any, LabelFilter.Null)
+                            .Select(KeyFilter.Any, Environment.GetEnvironmentVariable("APP_ENVIRONMENT"));
                     });
                 })
                 .UseStartup<Startup>());
     }
 }
+
