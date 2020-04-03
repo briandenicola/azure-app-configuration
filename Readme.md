@@ -17,7 +17,7 @@ This is a quick demo on how to use Azure App Configuration with Managed Identiti
         * Value - "this came from AppConfig"
 
 ## Web Site Deployment
-* Deploy the code in .\src to your Azure App Service slot. I use Visual Studio Cdoe for my deploy
+* Deploy the code in .\src to your Azure App Service slot. I use Visual Studio Code for my deploy
 
 # Test
 * Invoke-RestMethod -UseBasicParsing -Uri https://bjdweb002-uat.azurewebsites.net/appconfig | ConvertTo-Json
