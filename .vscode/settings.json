@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/5cd8aef3-0105-48cd-99bf-f616497eab80/resourceGroups/DevSub01_AppConfig02_RG/providers/Microsoft.Web/sites/bjdweb002/slots/uat",
-    "appService.deploySubpath": "src"
-}

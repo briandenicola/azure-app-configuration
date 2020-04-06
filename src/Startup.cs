@@ -36,9 +36,7 @@ namespace dotnet_restapi
                 app.UseDeveloperExceptionPage();
             }
 
-            //app.UseHttpsRedirection();
-            //app.UseAuthorization();
-
+            app.UseAzureAppConfiguration();
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {

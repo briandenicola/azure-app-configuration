@@ -28,6 +28,11 @@ namespace dotnet_restapi
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(Environment.GetEnvironmentVariable("APP_CONFIG_ENDPOINT")), credentials)
+                            .ConfigureRefresh(refresh =>
+                            {
+                                refresh.Register("config:sentinel", refreshAll: true)
+                                       .SetCacheExpiration(new TimeSpan(0, 1, 0));
+                            })
                             .ConfigureKeyVault(kv =>
                             {
                                 kv.SetCredential(credentials);
