@@ -23,7 +23,6 @@ namespace dotnet_restapi
                 .ConfigureWebHostDefaults(webBuilder =>
                 webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
-                    var settings = config.Build();
                     var credentials = new ManagedIdentityCredential();
 
                     config.AddAzureAppConfiguration(options =>
