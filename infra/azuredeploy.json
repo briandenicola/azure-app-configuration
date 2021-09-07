@@ -135,7 +135,7 @@
             "properties": {
                 "sku": {
                     "family": "A",
-                    "name": "Standard",
+                    "name": "Standard"
                 },
                 "tenantId": "[variables('tenantId')]",
                 "accessPolicies": [
