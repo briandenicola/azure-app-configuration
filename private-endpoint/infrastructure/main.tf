@@ -28,22 +28,19 @@ resource "random_pet" "this" {
 locals {
   location                    = "southcentralus"
   resource_name               = "${random_pet.this.id}-${random_id.this.dec}"
-  virtual_network_name        = "DevSub01-Vnet-001"
-  virtual_network_rg          = "DevSub01_Network_RG"
-  subnet_name                 = "private-endpoints"
 }
 
 data "azurerm_client_config" "current" {}
 
 data "azurerm_virtual_network" "this" {
-  name                = local.virtual_network_name
-  resource_group_name = local.virtual_network_rg
+  name                = var.virtual_network_name
+  resource_group_name = var.virtual_network_rg
 }
 
 data "azurerm_subnet" "this" {
-  name                 = local.subnet_name
-  virtual_network_name = local.virtual_network_name
-  resource_group_name  = local.virtual_network_rg
+  name                 = var.subnet_name
+  virtual_network_name = var.virtual_network_name
+  resource_group_name  = var.virtual_network_rg
 }
 
 resource "azuread_application" "this" {
@@ -116,4 +113,12 @@ resource "azurerm_role_assignment" "admin" {
   scope                = azurerm_app_configuration.this.id
   role_definition_name = "App Configuration Data Owner"
   principal_id         =  data.azurerm_client_config.current.object_id
+}
+
+output "client_id" {
+  value = azuread_service_principal.this.application_id
+}
+
+output "tenant_id" {
+  value = data.azurerm_client_config.current.tenant_id
 }
