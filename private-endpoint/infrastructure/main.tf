@@ -54,6 +54,10 @@ resource "azuread_service_principal" "this" {
   owners                       = [data.azurerm_client_config.current.object_id]
 }
 
+resource "azuread_application_password" "this" {
+  application_object_id = azuread_application.this.object_id
+}
+
 resource "azurerm_resource_group" "this" {
   name                  = "${local.resource_name}_rg"
   location              = local.location
@@ -117,6 +121,11 @@ resource "azurerm_role_assignment" "admin" {
 
 output "client_id" {
   value = azuread_service_principal.this.application_id
+}
+
+output "client_secret" {
+  value = azuread_application_password.this.value
+  sensitive = true
 }
 
 output "tenant_id" {
