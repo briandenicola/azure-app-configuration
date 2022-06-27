@@ -14,3 +14,8 @@ cd src
 bash ./pubish.sh
 ./publish/linux/appconfig-demo -a  https://my-appconfig.azconfig.io
 ```
+
+# Result
+```
+The value of "sample" retrieved from https://my-appconfig.azconfig.io/ is "quick example test"
+```
