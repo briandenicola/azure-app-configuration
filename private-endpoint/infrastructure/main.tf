@@ -119,6 +119,11 @@ resource "azurerm_role_assignment" "admin" {
   principal_id         =  data.azurerm_client_config.current.object_id
 }
 
+
+output "appconfig_uri" {
+  value = azurerm_app_configuration.this.endpoint
+}
+
 output "client_id" {
   value = azuread_service_principal.this.application_id
 }
